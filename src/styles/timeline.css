@@ -1,0 +1,285 @@
+/* =========================================
+   Timeline Styles — Event & Activity Timeline
+   [v2.4] iOS 風格卡片 + 精緻動畫
+   ========================================= */
+
+.timeline {
+  padding-top: var(--space-8);
+}
+
+.event-row {
+  display: flex;
+  margin-bottom: var(--space-24);
+  position: relative;
+  animation: slideUp 0.45s ease forwards;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.event-row:nth-child(1) { animation-delay: 0s; }
+.event-row:nth-child(2) { animation-delay: 0.05s; }
+.event-row:nth-child(3) { animation-delay: 0.1s; }
+.event-row:nth-child(4) { animation-delay: 0.15s; }
+.event-row:nth-child(5) { animation-delay: 0.2s; }
+.event-row:nth-child(6) { animation-delay: 0.25s; }
+.event-row:nth-child(7) { animation-delay: 0.3s; }
+.event-row:nth-child(8) { animation-delay: 0.35s; }
+
+/* ── 時間欄 ──────────────────────────── */
+.time-col {
+  width: 58px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: var(--space-12);
+  padding-top: 20px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: -0.3px;
+}
+
+/* ── 時間軸中線 ──────────────────────── */
+.timeline-center {
+  width: 24px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 32px;
+  bottom: -32px;
+  width: 2px;
+  border-left: none;
+  background: var(--border-light);
+}
+
+.event-row:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  border: 2.5px solid var(--accent);
+  margin-top: 24px;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.12);
+  transition: all var(--transition-fast);
+}
+
+/* ── 卡片欄 ──────────────────────────── */
+.card-col {
+  flex: 1;
+  padding-left: var(--space-12);
+  min-width: 0;
+}
+
+.mini-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16) var(--space-16);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  cursor: pointer;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.mini-card:active {
+  transform: scale(0.97);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── 卡片內容 ────────────────────────── */
+.mc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mc-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mc-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(8, 145, 178, 0.08);
+  padding: 3px var(--space-8);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.mc-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  transition: color var(--transition-base);
+}
+
+.mc-sub {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+  margin-top: var(--space-2);
+  line-height: 1.4;
+}
+
+/* ── Checkbox（加大觸控區域 44x44 符合 iOS 標準）──── */
+.mc-check {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  margin-left: var(--space-4);
+  margin-top: -6px;
+  margin-right: -8px;
+  margin-bottom: -6px;
+  position: relative;
+  z-index: 2;
+}
+
+.mc-check:active {
+  transform: scale(0.8);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.mc-check:hover {
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ── 完成狀態 ────────────────────────── */
+.timeline-dot.done {
+  background: var(--success);
+  border-color: var(--success);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.event-row.completed .time-col {
+  color: var(--text-tertiary);
+}
+
+.event-row.completed .timeline-line {
+  background: var(--bg-tertiary);
+}
+
+.mini-card.card-done {
+  background: var(--bg-secondary);
+  opacity: 0.6;
+  border-color: var(--bg-tertiary);
+}
+
+.mini-card.card-done .mc-title {
+  text-decoration: line-through;
+  color: var(--text-tertiary);
+}
+
+.mini-card.card-done .mc-sub {
+  color: var(--text-tertiary);
+}
+
+.mini-card.card-done .mc-tag {
+  color: var(--text-tertiary);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.event-row.completed .mc-check {
+  color: var(--success);
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.event-row.completed .mc-check i {
+  animation: checkBounce 0.3s ease;
+}
+
+/* ── 左滑完成手勢 ──────────────────── */
+.swipe-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+/* 滑動露出的操作區域（右側） */
+.swipe-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80px;
+  background: var(--success);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.swipe-action i {
+  font-size: 1.3rem;
+}
+
+/* 已完成時露出的是「取消」— 用橘色區分 */
+.swipe-action.is-undo {
+  background: var(--accent);
+}
+
+/* 滑動時顯示操作區（漸進淡入）*/
+.swipe-wrap.swiping .swipe-action {
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
+}
+
+/* 滑動中的卡片：取消原本的 active 縮放、取消 transition */
+.swipe-wrap.swiping .mini-card {
+  transition: none;
+}
+
+.swipe-wrap.swiping .mini-card:active {
+  transform: none;
+}
+
+/* 滑動回彈動畫（未達門檻，彈回原位）*/
+.swipe-wrap .mini-card.snap-back {
+  transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 滑動觸發：先平滑回到原位，再執行 toggleComplete */
+.swipe-wrap .mini-card.swipe-triggered {
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: translateX(0) !important;
+}
