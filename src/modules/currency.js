@@ -14,13 +14,13 @@ const Currency = {
   // ── 幣別定義 ──────────────────────────
   currencies: [
     { code: 'TWD', flag: '🇹🇼', name: '新台幣', symbol: 'NT$' },
-    { code: 'VND', flag: '🇻🇳', name: '越南盾', symbol: '₫' },
+    { code: 'KRW', flag: '🇰🇷', name: '韓元', symbol: '₩' },
     { code: 'USD', flag: '🇺🇸', name: '美元', symbol: '$' },
   ],
 
   // ── 狀態 ──────────────────────────────
   baseCurrency: 'TWD',
-  rates: { TWD: 1, VND: 770, USD: 0.031 },
+  rates: { TWD: 1, KRW: 40, USD: 0.031 },
   lastUpdated: null,
   inputValue: '',
   activeQuick: null,
@@ -205,7 +205,7 @@ const Currency = {
 
       // 格式化：小數位依幣別調整
       let formatted;
-      if (c.code === 'VND' || result > 1000) {
+      if (c.code === 'KRW' || result > 1000) {
         formatted = Math.round(result).toLocaleString();
       } else if (result < 0.01) {
         formatted = result.toFixed(6);

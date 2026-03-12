@@ -45,13 +45,13 @@ const Utils = {
     const overlay = document.getElementById(id);
     overlay.classList.add("active");
   },
-  speak(text, lang = "vi-VN") {
+  speak(text, lang = "ko-KR") {
     const u = new SpeechSynthesisUtterance(text);
 
     let voiceLang = lang;
 
-    if (lang === "vi")
-      voiceLang = "vi-VN";
+    if (lang === "ko")
+      voiceLang = "ko-KR";
     else if (lang === "en") voiceLang = "en-US";
     else if (lang === "zh-TW") voiceLang = "zh-TW";
 

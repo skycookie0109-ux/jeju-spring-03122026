@@ -5,10 +5,10 @@
 
 const Store = {
   config: {
-    appTitle: "越南輕旅行",
-    appSubtitle: "Da Nang 2026",
-    startDate: "2026-12-06",
-    targetLang: "vi",
+    appTitle: "濟州春日散策",
+    appSubtitle: "Jeju 2026",
+    startDate: "2026-03-13",
+    targetLang: "ko",
   },
   itinerary: [],
   recommendations: {},

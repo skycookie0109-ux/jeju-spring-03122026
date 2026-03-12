@@ -73,7 +73,7 @@ const Finance = {
       btn.classList.remove("listening");
       btn.style.opacity = "1";
       btn.innerHTML =
-        '<i class="fa-solid fa-microphone"></i> 按下說話 (例：2月10號晚餐越南盾50萬元)';
+        '<i class="fa-solid fa-microphone"></i> 按下說話 (例：3月14號午餐韓元5萬元)';
     }
   },
 
@@ -91,7 +91,7 @@ const Finance = {
   },
 
   formatMoney(amount, currency) {
-    const decimals = currency === "VND" ? 0 : 1;
+    const decimals = currency === "KRW" ? 0 : 1;
     return new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 0,
       maximumFractionDigits: decimals,
@@ -112,7 +112,7 @@ const Finance = {
     }
 
     if (!App.Currency.rates || !App.Currency.rates[curr]) {
-      App.Currency.rates = { TWD: 1, VND: 770, USD: 0.031 };
+      App.Currency.rates = { TWD: 1, KRW: 40, USD: 0.031 };
     }
 
     const rate = App.Currency.rates[curr];
@@ -264,9 +264,9 @@ const Finance = {
       }
     }
 
-    let currency = "VND";
+    let currency = "KRW";
     const currencyMatchers = [
-      { code: "VND", regex: /(越南盾|越盾|盾|VND|Dong)/i },
+      { code: "KRW", regex: /(韓元|韓幣|원|KRW|Won)/i },
       { code: "TWD", regex: /(台幣|新台幣|TWD|NT\$|NT)/i },
       { code: "USD", regex: /(美金|美元|USD|US\$|\$)/i },
     ];
@@ -309,7 +309,7 @@ const Finance = {
       /花費|花了|金額|是|用|去|買|吃|元|塊|錢|的|了|總共|共/g;
     remainingText = remainingText.replace(noiseWords, "");
     remainingText = remainingText.replace(
-      /(越南盾|越盾|盾|台幣|新台幣|美金|VND|TWD|USD)/gi,
+      /(韓元|韓幣|원|台幣|新台幣|美金|KRW|TWD|USD)/gi,
       ""
     );
     let name = remainingText
@@ -355,7 +355,7 @@ const Finance = {
     }
 
     if (!App.Currency.rates || !App.Currency.rates[currency]) {
-      App.Currency.rates = { TWD: 1, VND: 770, USD: 0.031 };
+      App.Currency.rates = { TWD: 1, KRW: 40, USD: 0.031 };
     }
 
     const rate = App.Currency.rates[currency];
@@ -432,7 +432,7 @@ const Finance = {
     });
 
     if (!App.Currency.rates)
-      App.Currency.rates = { TWD: 1, VND: 770, USD: 0.031 };
+      App.Currency.rates = { TWD: 1, KRW: 40, USD: 0.031 };
     const targetRate = App.Currency.rates[this.currentTotalType] || 1;
 
     const displayTotalNum = totalBaseTwd * targetRate;

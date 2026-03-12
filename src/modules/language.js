@@ -67,7 +67,7 @@ const Language = {
     }
 
     grid.innerHTML = phrases.map(p =>
-      `<div class="phrase-card" onclick="App.Utils.speak('${p.target.replace(/'/g, "\\'")}', 'vi-VN')">
+      `<div class="phrase-card" onclick="App.Utils.speak('${p.target.replace(/'/g, "\\'")}', 'ko-KR')">
         <div class="phrase-card-icon">${p.icon}</div>
         <div>
           <div class="phrase-card-zh">${p.zh}</div>
